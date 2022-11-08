@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block styles %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<form method="post">
+  <div class="reg_form">
+    <p>Login</p>
+    {% if login_form_is_invalid %}
+    Enter valid username and password
+    {% endif %}
+    <div class="form_fields">
+      <div class="form_field">
+        <input class="blocks" type="text" placeholder="User name" name="username">
+      </div>
+      <div class="form_field">
+        <input class="blocks" type="password" placeholder="Password" name="password">
+      </div>
+    </div>
+    <div class="form_buttons">
+      <button class="button" type="submit">Login</button>
+    </div>
+    <div class="link">
+      <a href="/registration/">Register</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

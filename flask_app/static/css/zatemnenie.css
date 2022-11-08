@@ -1,0 +1,102 @@
+#task-zatemnenie {
+   background: rgba(102, 102, 102, 0.5);
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   display: none;
+   z-index: 2002;
+}
+
+#change_task_info_form:target {
+display: block;
+}
+
+#change_task_info_form {
+   background: rgba(102, 102, 102, 0.5);
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   display: none;
+   z-index: 2002;
+}
+
+#task-zatemnenie:target {
+display: block;
+}
+
+#myTest-zatemnenie {
+   background: rgba(102, 102, 102, 0.5);
+   width: 100%;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   display: none;
+   z-index: 2002;
+ }
+
+ #myTest-zatemnenie:target {
+   display: block;
+ }
+
+ .myTest{
+  padding: 20px;
+  background-color: #252628;
+  width: fit-content;
+  border-radius: 10px;
+  margin: 100px auto;
+  position: relative;
+ }
+
+ .myTest_input{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+ }
+
+ .myTest_input input, #task_status_select{
+    width: 300px;
+    padding: 5px;
+    border-radius: 3px;
+    outline: none;
+    font-size: 17px;
+ }
+
+ #task_status_select {
+    width: 313px;
+ }
+
+ .myTest_input span{
+  color: white;
+ }
+
+ .creat_btn{
+  width: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+ }
+
+ .creat_btn button{
+  border-radius: 3px;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+ }
+
+ .close{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+ }
+
+ .close a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+ }

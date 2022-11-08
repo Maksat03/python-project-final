@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/zatemnenie.css') }}">
+	<script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+<div id="app">
+	<form @submit.prevent="create_task_form_onsubmit" id="task-zatemnenie" action="http://127.0.0.1:8000/create_task/" method="post">
+		<div class="myTest">
+			<div class="myTest_input">
+				<span>Кому адресована задача</span>
+				<input type="text" name="project_member_username" v-model="create_task_form.project_member_username">
+			</div>
+
+			<div class="myTest_input">
+				<span>Задача</span>
+				<input type="text" name="text" v-model="create_task_form.text">
+			</div>
+
+			<div class="myTest_input">
+				<span>Срок</span>
+				<input type="date" name="deadline" v-model="create_task_form.deadline">
+			</div>
+
+			<div class="myTest_input">
+				<span>Статус задачи</span>
+				<select name="status" id="task_status_select" v-model="create_task_form.status">
+					<option value="To do">To do</option>
+					<option value="Doing">Doing</option>
+					<option value="Done">Done</option>
+				</select>
+			</div>
+
+			<div class="creat_btn">
+				<button type="submit">Создать</button>
+			</div>
+
+			<div class="close">
+				<a href="#">✖</a>
+			</div>
+		</div>
+	</form>
+
+	<form @submit.prevent="change_task_info_form_onsubmit" id="change_task_info_form" action="http://127.0.0.1:8000/change_task_info/" method="post">
+		<div class="myTest">
+			<div class="myTest_input">
+				<span>Кому адресована задача</span>
+				<input type="text" name="project_member_username" v-model="change_task_info_form.project_member_username">
+			</div>
+
+			<div class="myTest_input">
+				<span>Задача</span>
+				<input type="text" name="text" v-model="change_task_info_form.text">
+			</div>
+
+			<div class="myTest_input">
+				<span>Срок</span>
+				<input type="date" name="deadline" v-model="change_task_info_form.deadline">
+			</div>
+
+			<div class="myTest_input">
+				<span>Статус задачи</span>
+				<select name="status" id="task_status_select_for_task_changing" v-model="change_task_info_form.status">
+					<option value="To do">To do</option>
+					<option value="Doing">Doing</option>
+					<option value="Done">Done</option>
+				</select>
+			</div>
+
+			<div class="creat_btn">
+				<button type="submit">Change</button>
+			</div>
+
+			<div class="close">
+				<a href="#">✖</a>
+			</div>
+		</div>
+	</form>
+
+	<form @submit.prevent="create_project_form_onsubmit" id="myTest-zatemnenie" action="http://127.0.0.1:8000/create_project/" method="post">
+		<div class="myTest">
+			<div class="myTest_input">
+				<span>Название проекта</span>
+				<input type="text" name="name" v-model="project_name_input_of_create_project_form">
+			</div>
+
+			<div class="creat_btn">
+				<button type="submit">Создать</button>
+			</div>
+
+			<div class="close">
+				<a href="#">✖</a>
+			</div>
+		</div>
+	</form>
+
+	<div class="container">
+		<div class="vertical_menu">
+			<div class="tests_name">
+				<div class="my_tests">
+					<b>Мои проекты</b>
+					<a href="#myTest-zatemnenie"><img src="{{ url_for('static', filename='css/plus.png') }}" alt=""></a>
+				</div>
+
+				<div class="test_name" v-for="(project, index) in projects" :key="index">
+					<input type="radio" id="test_${ index }" name="project_select" value="${ project.id }">
+					<label for="test_${ index }" @click="open_project_tasks(project.id)">${ project.name }</label>
+					<div class="delete_project_button" @click="delete_project_member_from_project_button_onclick(project.id)">X</div>
+				</div>
+			</div>
+
+			<div class="exit">
+				<a href="/logout/">Выйти</a>
+			</div>
+		</div>
+		<div id="welcome_view">You're Welcome</div>
+		<div class="main_blocks" id="tasks_board_view" style="display: none">
+			<div class="block">
+				<div class="status">
+					<b>To do</b>
+					<a href="#task-zatemnenie">+</a>
+				</div>
+
+				<div class="tasks">
+					<div class="task" v-for="task in tasks.todo">
+						<p class="for_whom">${ task.project_member_username }</p>
+						<p class="task_info">${ task.text }</p>
+						<p class="deadline">${ task.deadline }</p>
+
+						<div class="edit">
+							<a @click="delete_task_button_onclick(task.id)"><img src="{{ url_for('static', filename='css/delete.png') }}" alt=""></a>
+							<a @click="change_task_info_form_open(task.id)"><img src="{{ url_for('static', filename='css/pencil.png') }}" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="block">
+				<div class="status">
+					<b>Doing</b>
+					<a href="#task-zatemnenie">+</a>
+				</div>
+
+				<div class="tasks">
+					<div class="task" v-for="task in tasks.doing">
+						<p class="for_whom">${ task.project_member_username }</p>
+						<p class="task_info">${ task.text }</p>
+						<p class="deadline">${ task.deadline }</p>
+
+						<div class="edit">
+							<a @click="delete_task_button_onclick(task.id)"><img src="{{ url_for('static', filename='css/delete.png') }}" alt=""></a>
+							<a @click="change_task_info_form_open(task.id)"><img src="{{ url_for('static', filename='css/pencil.png') }}" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="block">
+				<div class="status">
+					<b>Done</b>
+					<a href="#task-zatemnenie">+</a>
+				</div>
+
+				<div class="tasks">
+					<div class="task" v-for="task in tasks.done">
+						<p class="for_whom">${ task.project_member_username }</p>
+						<p class="task_info">${ task.text }</p>
+						<p class="deadline">${ task.deadline }</p>
+
+						<div class="edit">
+							<a @click="delete_task_button_onclick(task.id)"><img src="{{ url_for('static', filename='css/delete.png') }}" alt=""></a>
+							<a @click="change_task_info_form_open(task.id)"><img src="{{ url_for('static', filename='css/pencil.png') }}" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var user_id = {{ user.id }}
+</script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script>
+	const mountedApp = app.mount("#app")
+</script>
+</body>
+</html>

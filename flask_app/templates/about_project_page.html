@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Manage your projects, tasks and teammates</title>
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/aboutProject.css') }}">
+</head>
+<body>
+	<div class="container">
+		<div class="upper_block">
+			<b>Начните управлять своими проектами <br> вместе с нами</b>
+			<p>Мы выведем ваши навыки на новый уровень</p>
+		</div>
+
+		<div class="screen">
+			<div class="screen_text1">
+				<p>Управляйте несколькими проектами одновременно</p>
+			</div>
+
+			<div class="screen_img1">
+				<img src="{{ url_for('static', filename='css/screen1.png') }}" alt="">
+			</div>
+		</div>
+
+		<div class="screen">
+			<div class="screen_img2">
+				<img src="{{ url_for('static', filename='css/screen2.png') }}" alt="">
+			</div>
+
+			<div class="screen_text2">
+				<p>Работайте над проектом вместе и эффективно</p>
+			</div>
+		</div>
+
+		<div class="start">
+			<b>Начните сейчас</b>
+
+			<div>
+				<a href="/login/">Войти</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

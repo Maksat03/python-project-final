@@ -1,0 +1,109 @@
+body{
+	margin: 0;
+  	font-family: "Geometria";
+  	background-color: #9CB4CC;
+}
+
+.container{
+	min-height: 100vh;
+}
+
+.upper_block{
+	height: 100vh;
+	background-image: url(upper_img.png);
+	background-position: bottom;
+	background-size: cover;
+	color: #9CB4CC;
+	position: relative;
+}
+
+.upper_block b{
+	font-size: 40px;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.upper_block p{
+	font-size: 25px;
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.screen{
+	display: flex;
+	width: 1000px;
+	margin: 0 auto;
+	padding: 200px 0;
+	align-items: center;
+	text-align: center;
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+.screen_text1{
+	width: 300px;
+}
+
+.screen_text1 p{
+	font-size: 20px;
+}
+
+.screen_img1{
+	margin-left: auto;
+}
+
+.screen_img1 img{
+	width: 675px;
+	border-radius: 10px;
+	border: 1px solid white;
+}
+
+.screen_img2{
+	margin-right: auto;
+}
+
+.screen_img2 img{
+	width: 675px;
+	border-radius: 10px;
+	border: 1px solid white;
+}
+
+.screen_text2{
+	width: 280px;
+	margin-left: auto;
+}
+
+.screen_text2 p{
+	font-size: 20px;
+}
+
+.start{
+	text-align: center;
+	margin: 100px 0 220px 0px;
+}
+
+.start b{
+	font-size: 30px;
+	color: white;
+}
+
+.start div{
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
+.start div a{
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	background-color: black;
+	padding: 5px 30px;
+	border-radius: 5px;
+	font-size: 25px;
+}

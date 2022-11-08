@@ -1,0 +1,138 @@
+body{
+  margin: 0;
+  font-family: "Geometria";
+  background-color: #9CB4CC;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  max-height: 100vh;
+}
+
+.vertical_menu{
+	width: 15vw;
+	border-right: 1px solid;
+	position: relative;
+}
+
+.exit{
+	position: absolute;
+	bottom: 50px;
+	left: 20px;
+}
+
+.exit a{
+	text-decoration: none;
+	color: red;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.tests_name{
+  padding: 20px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.my_tests{
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.tests_name b{
+  font-size: 16px;
+}
+
+.tests_name a{
+  background: none;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 1px;
+}
+
+.tests_name img{
+  height: 12px;
+}
+
+.test_name label{
+  user-select: none;
+  margin-left: -5px;
+  cursor: pointer;
+}
+
+.test_name{
+  position: relative;
+}
+
+.test_name input[type="radio"]{
+  visibility: hidden;
+  width: 7px;
+}
+
+.test_name input[type="radio"]:checked + label::before{
+  content: '•';
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  top: -7px;
+  left: 0;
+}
+
+.test{
+  display: flex;
+}
+
+.main_blocks{
+	width: 100%;
+	display: flex;
+	height: 100vh;
+}
+
+.block{
+	width: 100%;
+	border-right: 1px solid black;
+	padding: 20px;
+}
+
+.tasks{
+	max-height: calc(100vh - 40px);
+	overflow-y: auto;
+}
+
+.status{
+	text-align: center;
+	border-bottom: 1px solid;
+}
+
+.task{
+	width: 80%;
+	margin: 20px auto;
+	border-radius: 10px;
+	background-color: white;
+	padding: 10px;
+	position: relative;
+}
+
+.for_whom{
+	margin-top: 0;
+}
+
+.deadline{
+	margin-bottom: 0;
+}
+
+.edit{
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+}
+
+.edit img{
+	height: 30px;
+}

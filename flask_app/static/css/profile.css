@@ -1,0 +1,57 @@
+body{
+	margin: 0;
+	background-color: #D8D9CF;
+}
+
+.profile_info{
+	width: fit-content;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.profile_img img{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+
+.profile_text{
+	margin: 0 50px;
+	width: fit-content;
+	height: 100%;
+	display: block;
+}
+
+.profile_text input{
+	padding: 5px;
+	font-size: 16px;
+	outline: none;
+	pointer-events: none;
+	margin-bottom: 10px;
+	width: 300px;
+}
+
+.edit{
+	margin-top: auto;
+	margin-bottom: 10px;
+}
+
+.edit button{
+	cursor: pointer;
+}
+
+.about{
+	width: 60%;
+	margin: auto;
+}
+
+.about textarea{
+	width: 100%;
+	border-radius: 10px;
+	outline: none;
+	pointer-events: none;
+}

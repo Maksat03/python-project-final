@@ -1,0 +1,43 @@
+body{
+	margin: 0;
+	background-color: #9CB4CC;
+}
+
+.reg_form{
+	padding: 25px;
+	width: 400px;
+	border-radius: 10px;
+	margin: 100px auto;
+	background-color: white;
+}
+
+.form_field{
+	margin-bottom: 10px;
+}
+
+.form_field input{
+	width: calc(100% - 14px);
+	padding: 10px 5px;
+	font-size: 18px;
+	outline: none;
+}
+
+.form_buttons button{
+	width: 100%;
+	padding: 10px;
+	font-size: 18px;
+	background-color: #002B5B;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.link{
+	margin-top: 5px;
+}
+
+p{
+	margin: 0 0 5px 0;
+	text-align: center;
+	font-size: 18px;
+}
